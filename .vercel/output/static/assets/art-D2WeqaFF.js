@@ -1,0 +1,1 @@
+import{C as e,T as t,w as n}from"./index-CpLffg6C.js";var r=t(n(),1),i=e();function a({src:e,alt:t,className:n,eager:a}){let[o,s]=(0,r.useState)(!0);return o?(0,i.jsx)(`img`,{src:e,alt:t,className:n,loading:a?`eager`:`lazy`,onError:()=>s(!1)}):(0,i.jsx)(`div`,{className:`bg-surface ${n??``}`,"aria-hidden":!0})}export{a as t};

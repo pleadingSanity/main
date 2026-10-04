@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@import "@fontsource/fraunces/latin-500.css";
+@import "@fontsource/fraunces/latin-600.css";
+@import "@fontsource/fraunces/latin-500-italic.css";
+@import "@fontsource/outfit/latin-400.css";
+@import "@fontsource/outfit/latin-500.css";
+
+@theme {
+  --color-bg: #000103;
+  --color-surface: #0d1b2a;
+  --color-fg: #eef6ff;
+  --color-muted: color-mix(in srgb, #eef6ff 64%, #0d1b2a);
+  --color-primary: #00fff0;
+  --color-flare: #ff4fa8;
+  --color-line: color-mix(in srgb, #00fff0 28%, #0d1b2a);
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", palatino, serif;
+  --radius: 1rem;
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    min-height: 100dvh;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-primary) 40%, transparent);
+    color: var(--color-bg);
+  }
+}
+
+.tap {
+  transition: scale 150ms ease-out;
+}
+
+.tap:active:not(:disabled) {
+  scale: 0.96;
+}
+
+.stage {
+  height: min(44dvh, 28rem);
+  min-height: 16rem;
+}
+
+.dock {
+  padding-bottom: max(0.4rem, env(safe-area-inset-bottom));
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.rise > * {
+  animation: rise-in 460ms ease-out both;
+}
+
+.rise > *:nth-child(2) {
+  animation-delay: 70ms;
+}
+.rise > *:nth-child(3) {
+  animation-delay: 140ms;
+}
+.rise > *:nth-child(4) {
+  animation-delay: 210ms;
+}
+.rise > *:nth-child(5) {
+  animation-delay: 280ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise > * {
+    animation: none;
+  }
+
+  .tap:active:not(:disabled) {
+    scale: 1;
+  }
+}
+
+.glass {
+  background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 0 32px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  backdrop-filter: blur(12px);
+}
+
